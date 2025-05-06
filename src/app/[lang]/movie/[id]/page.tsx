@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import { Show } from "@/domain/entities/Show";
 import HorizontalNav from "@/components/Navigation/HorizontalNav";
 import MovieDetail from "@/components/Show/Detail";
-import DetailSkeleton from "@/components/Show/Skeleton/DetailSkeleton";
+import DetailLoadingSkeleton from "@/components/Show/Skeleton/DetailLoadingSkeleton";
+import ErrorSkeleton from "@/componens/Show/Skeleton/ErrorSkeleton";
 import { useParams } from "next/navigation";
 
 const ShowsPage = () => {
   const [show, setShow] = useState<Show | null>(null);
   const [loading, setLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   const params = useParams();
   const id = params?.id as string;
@@ -23,7 +25,7 @@ const ShowsPage = () => {
         const data: Show = await response.json();
         setShow(data);
       } catch (error) {
-        console.error("Failed to fetch show:", error);
+        setHasError(true);
       } finally {
         setLoading(false);
       }
@@ -32,18 +34,21 @@ const ShowsPage = () => {
     fetchShowById();
   }, [id]);
 
+  if (loading) {
+    return (
+      <div className="bg-[#141414] min-h-screen text-white overflow-x-hidden">
+        <HorizontalNav />
+        <main>
+          <DetailLoadingSkeleton />
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-[#141414] min-h-screen text-white overflow-x-hidden">
       <HorizontalNav />
-      <main>
-        {loading ? (
-          <DetailSkeleton />
-        ) : show ? (
-          <MovieDetail movie={show} />
-        ) : (
-          <p className="p-8 text-center text-gray-400">Show not found.</p>
-        )}
-      </main>
+      <main>{show && <MovieDetail movie={show} />}</main>
     </div>
   );
 };
