@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { Play, Info, Plus } from "lucide-react";
 import { useIsMobile } from "@hooks/use-mobile";
 import MainShowBg from "@assets/main_show_bg.png";
@@ -8,8 +10,31 @@ import series from "@assets/series.png";
 import top10 from "@assets/top10.png";
 import shimmer from "@assets/shimmer.png";
 
+import HeroLoadingSkeleton from "./Show/Skeleton/HeroLoadingSkeleton";
+
 const HeroSection = () => {
   const isMobile = useIsMobile();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        await new Promise((res) => setTimeout(res, 1500));
+      } catch (e) {
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    load();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="relative w-full h-[75vh] md:h-screen overflow-hidden">
+        <HeroLoadingSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full h-[75vh] md:h-screen overflow-hidden">
@@ -51,7 +76,7 @@ const HeroSection = () => {
             className="w-48 md:w-96"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.src = target.src = shimmer.src;
+              target.src = shimmer.src;
             }}
           />
         </div>
@@ -86,7 +111,7 @@ const HeroSection = () => {
           }`}
         >
           {isMobile && (
-            <button className="bg-transparent  text-white px-4 py-2 rounded flex items-center font-semibold transition hover:bg-white/10">
+            <button className="bg-transparent text-white px-4 py-2 rounded flex items-center font-semibold transition hover:bg-white/10">
               <Plus className="h-5 w-5 mr-2" />
               My List
             </button>
@@ -100,7 +125,7 @@ const HeroSection = () => {
           <button
             className={`${
               isMobile
-                ? "bg-transparent  text-white px-4 py-2"
+                ? "bg-transparent text-white px-4 py-2"
                 : "bg-gray-600/70 text-white px-6 py-3 hover:bg-gray-600/90"
             } rounded flex items-center font-semibold transition`}
           >
