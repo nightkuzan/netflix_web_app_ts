@@ -1,5 +1,6 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { createContext, useContext, ReactNode } from "react";
 
 export type Dictionaries = Record<string, any>;
@@ -24,10 +25,15 @@ export default function DictionariesProvider({
 
 export function useDictionaries(): Dictionaries {
   const context = useContext(DictionariesContext);
+  const params = useParams();
+  const locale = params.lang;
+
   if (!context) {
     throw new Error(
       "useDictionaries must be used within a DictionariesProvider"
     );
   }
+
+  context.locale = locale;
   return context;
 }
