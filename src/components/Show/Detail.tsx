@@ -38,7 +38,7 @@ const MovieDetail: React.FC<Props> = ({ movie }) => {
 
         <Button
           onClick={handleBack}
-          className="absolute top-20 left-4 z-20 flex items-center text-white hover:text-gray-300 hover:cursor-pointer"
+          className="absolute top-32 left-4 z-20 flex items-center text-white hover:text-gray-300 hover:cursor-pointer"
           size={isMobile ? "small" : "medium"}
         >
           <ChevronLeft className="h-5 w-5 mr-1" />
