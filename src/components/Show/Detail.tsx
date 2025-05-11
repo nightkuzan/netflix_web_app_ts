@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import React from "react";
 import { ChevronLeft, Play, Info, Star } from "lucide-react";
 import { useIsMobile } from "@hooks/use-mobile";
-import { useDictionaries } from "@core/contexts/dictionariesContext"; // Import the dictionary context
+import { useDictionaries } from "@core/contexts/dictionariesContext";
 import Button from "@mui/material/Button";
 import shimmer from "@assets/shimmer.png";
 import { Show } from "@/domain/entities/Show";
@@ -15,11 +15,10 @@ type Props = {
 
 const MovieDetail: React.FC<Props> = ({ movie }) => {
   const isMobile = useIsMobile();
-  const dictionaries = useDictionaries(); // Get the dictionaries
+  const dictionaries = useDictionaries();
   const text = dictionaries.text || {};
   const locale = dictionaries.locale as string;
 
-  // Helper function to get localized show title
   const getLocalizedTitle = (show: Show): string => {
     if (show.translations && show.translations[locale]) {
       return show.translations[locale].title;
@@ -27,7 +26,6 @@ const MovieDetail: React.FC<Props> = ({ movie }) => {
     return show.title;
   };
 
-  // Helper function to get localized show description
   const getLocalizedDescription = (show: Show): string => {
     if (show.translations && show.translations[locale]) {
       return show.translations[locale].description;
@@ -35,7 +33,6 @@ const MovieDetail: React.FC<Props> = ({ movie }) => {
     return show.description;
   };
 
-  // Helper function to get localized genre
   const getLocalizedGenre = (show: Show, genre: string): string => {
     if (
       show.genreTranslations &&

@@ -1,21 +1,20 @@
 import React from "react";
 import { Search, Bell, Menu, Cast, Info } from "lucide-react";
 import { useIsMobile } from "@hooks/use-mobile";
-import { useDictionaries } from "@core/contexts/dictionariesContext"; // Import the dictionary context
+import { useDictionaries } from "@core/contexts/dictionariesContext";
 import logo from "@/assets/logo.png";
 import n from "@/assets/n.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Navbar = () => {
   const isMobile = useIsMobile();
-  const dictionaries = useDictionaries(); // Get the dictionaries
+  const dictionaries = useDictionaries();
   const text = dictionaries.text || {};
 
   return (
     <header className="fixed top-0 w-full z-50 bg-gradient-to-b from-black/80 to-transparent px-2 md:px-12 py-2">
       <div className="flex items-center justify-between">
         {isMobile ? (
-          // Mobile Navigation - Based on the provided screenshot
           <header className="fixed top-0 left-0 right-0 z-50">
             <div className="p-4 flex justify-between items-center">
               {/* Netflix N Logo */}
@@ -56,7 +55,6 @@ const Navbar = () => {
             </div>
           </header>
         ) : (
-          // Desktop Navigation
           <>
             <div className="flex items-center space-x-8">
               {/* Netflix Logo */}

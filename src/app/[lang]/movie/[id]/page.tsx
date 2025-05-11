@@ -13,7 +13,7 @@ const ShowsPage = () => {
   const [show, setShow] = useState<Show | null>(null);
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  const dictionaries = useDictionaries(); // Get the dictionaries
+  const dictionaries = useDictionaries(); 
   
 
   const params = useParams();

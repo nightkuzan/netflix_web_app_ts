@@ -5,11 +5,11 @@ import { Show } from "@/domain/entities/Show";
 import ShowList from "@/components/Show/ShowList";
 import HorizontalNav from "@/components/Navigation/HorizontalNav";
 import HeroSection from "@/components/HeroSection";
-import { useDictionaries } from "@core/contexts/dictionariesContext"; // Import the dictionary context
+import { useDictionaries } from "@core/contexts/dictionariesContext";
 
 const ShowsPage = () => {
   const [shows, setShows] = useState<Show[]>([]);
-  const dictionaries = useDictionaries(); // Get the dictionaries
+  const dictionaries = useDictionaries();
   const text = dictionaries.text || {};
 
   useEffect(() => {

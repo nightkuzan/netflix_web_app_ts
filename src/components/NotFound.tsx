@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useDictionaries } from "@core/contexts/dictionariesContext"; // Import the dictionary context
+import { useDictionaries } from "@core/contexts/dictionariesContext";
 
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import type { SystemMode } from "@core/types";
 
 const NotFound = ({ mode }: { mode: SystemMode }) => {
-  const dictionaries = useDictionaries(); // Get the dictionaries
+  const dictionaries = useDictionaries();
   const text = dictionaries.text || {};
 
   return (
