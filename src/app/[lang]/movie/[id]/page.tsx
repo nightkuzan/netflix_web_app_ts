@@ -14,7 +14,7 @@ const ShowsPage = () => {
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const dictionaries = useDictionaries(); // Get the dictionaries
-  const text = dictionaries.text || {};
+  
 
   const params = useParams();
   const id = params?.id as string;
