@@ -26,7 +26,7 @@ export default async function RootLayout({
     lang: Locale;
   };
 }>) {
-  const { lang } = params;
+  const { lang } = await params;
   const dictionary = await getDictionary(lang as Locale);
 
   return (
