@@ -1,19 +1,22 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { i18nConfig } from "@configs/i18n";
 
 const LanguageSwitcher = () => {
   const params = useParams();
+  const pathname = usePathname();
   const currentLang = params.lang;
 
-  // Get the current path without the language prefix
-  const pathWithoutLang = window.location.pathname.replace(
-    `/${currentLang}`,
-    ""
-  );
+  const [pathWithoutLang, setPathWithoutLang] = useState("");
+
+  useEffect(() => {
+    if (pathname) {
+      setPathWithoutLang(pathname.replace(`/${currentLang}`, ""));
+    }
+  }, [pathname, currentLang]);
 
   return (
     <div className="flex items-center space-x-2 text-white">
