@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig } from "axios";
 import qs from "qs";
 
-const baseURL = process.env.NEXT_PUBLIC_APP_BASEURL
-  ? `${process.env.NEXT_PUBLIC_APP_BASEURL}/api`
+const baseURL = process.env.NEXT_PUBLIC_API_URL
+  ? `${process.env.NEXT_PUBLIC_API_URL}/api`
   : "http://localhost:1337/api";
 
 const config: AxiosRequestConfig = {
