@@ -1,6 +1,6 @@
 import { Show } from "../entities/Show";
 
 export interface ShowRepository {
-  getAllShows(): Show[];
-  getShowById(id: string): Show | undefined;
+  getAllShows(): Promise<Show[]>;
+  getShowById(id: string): Promise<Show | undefined>;
 }
