@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import React from "react";
 import { ChevronLeft, Play, Info, Star } from "lucide-react";
 import { useIsMobile } from "@hooks/use-mobile";
+import { useDictionaries } from "@core/contexts/dictionariesContext"; // Import the dictionary context
 import Button from "@mui/material/Button";
 import shimmer from "@assets/shimmer.png";
 import { Show } from "@/domain/entities/Show";
@@ -14,6 +15,37 @@ type Props = {
 
 const MovieDetail: React.FC<Props> = ({ movie }) => {
   const isMobile = useIsMobile();
+  const dictionaries = useDictionaries(); // Get the dictionaries
+  const text = dictionaries.text || {};
+  const locale = dictionaries.locale as string;
+
+  // Helper function to get localized show title
+  const getLocalizedTitle = (show: Show): string => {
+    if (show.translations && show.translations[locale]) {
+      return show.translations[locale].title;
+    }
+    return show.title;
+  };
+
+  // Helper function to get localized show description
+  const getLocalizedDescription = (show: Show): string => {
+    if (show.translations && show.translations[locale]) {
+      return show.translations[locale].description;
+    }
+    return show.description;
+  };
+
+  // Helper function to get localized genre
+  const getLocalizedGenre = (show: Show, genre: string): string => {
+    if (
+      show.genreTranslations &&
+      show.genreTranslations[locale] &&
+      show.genreTranslations[locale][genre]
+    ) {
+      return show.genreTranslations[locale][genre];
+    }
+    return genre;
+  };
 
   const handleBack = () => {
     window.history.back();
@@ -42,12 +74,12 @@ const MovieDetail: React.FC<Props> = ({ movie }) => {
           size={isMobile ? "small" : "medium"}
         >
           <ChevronLeft className="h-5 w-5 mr-1" />
-          <span className="text-sm">Back</span>
+          <span className="text-sm">{text.back}</span>
         </Button>
 
         <div className="relative z-10 h-full flex flex-col justify-end md:justify-center px-4 sm:px-6 md:px-12 pb-10 md:pb-20 pt-16">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3">
-            {movie.title}
+            {getLocalizedTitle(movie)}
           </h1>
 
           <div className="flex flex-wrap items-center gap-3 mb-4 text-sm text-gray-300">
@@ -71,14 +103,14 @@ const MovieDetail: React.FC<Props> = ({ movie }) => {
                   key={index}
                   className="bg-gray-800 text-white text-xs px-2 py-1 rounded"
                 >
-                  {g}
+                  {getLocalizedGenre(movie, g)}
                 </span>
               ))}
             </div>
           )}
 
           <p className="text-gray-300 text-sm sm:text-base max-w-2xl mb-6">
-            {movie.description}
+            {getLocalizedDescription(movie)}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -86,13 +118,13 @@ const MovieDetail: React.FC<Props> = ({ movie }) => {
               className="bg-white text-black hover:bg-white/90"
               fullWidth={isMobile}
             >
-              <Play className="h-5 w-5 mr-2" fill="black" /> Play
+              <Play className="h-5 w-5 mr-2" fill="black" /> {text.play}
             </Button>
             <Button
               className="border border-gray-400 text-white"
               fullWidth={isMobile}
             >
-              <Info className="h-5 w-5 mr-2" /> More Info
+              <Info className="h-5 w-5 mr-2" /> {text.more_info}
             </Button>
           </div>
         </div>

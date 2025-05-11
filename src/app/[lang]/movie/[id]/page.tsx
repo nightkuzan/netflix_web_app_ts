@@ -5,13 +5,16 @@ import { Show } from "@/domain/entities/Show";
 import HorizontalNav from "@/components/Navigation/HorizontalNav";
 import MovieDetail from "@/components/Show/Detail";
 import DetailLoadingSkeleton from "@/components/Show/Skeleton/DetailLoadingSkeleton";
-import ErrorSkeleton from "@/componens/Show/Skeleton/ErrorSkeleton";
+import ErrorSkeleton from "@/components/Show/Skeleton/ErrorSkeleton";
 import { useParams } from "next/navigation";
+import { useDictionaries } from "@core/contexts/dictionariesContext";
 
 const ShowsPage = () => {
   const [show, setShow] = useState<Show | null>(null);
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const dictionaries = useDictionaries(); // Get the dictionaries
+  const text = dictionaries.text || {};
 
   const params = useParams();
   const id = params?.id as string;
@@ -40,6 +43,17 @@ const ShowsPage = () => {
         <HorizontalNav />
         <main>
           <DetailLoadingSkeleton />
+        </main>
+      </div>
+    );
+  }
+
+  if (hasError) {
+    return (
+      <div className="bg-[#141414] min-h-screen text-white overflow-x-hidden">
+        <HorizontalNav />
+        <main>
+          <ErrorSkeleton />
         </main>
       </div>
     );

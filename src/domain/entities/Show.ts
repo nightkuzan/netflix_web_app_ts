@@ -8,6 +8,11 @@ export interface Show {
   backdropUrl: string;
   type: ShowType;
   genres: string[];
+  genreTranslations?: {
+    [key: string]: {
+      [genreName: string]: string;
+    };
+  };
   releaseYear: number;
   rating: number;
   duration?: string;

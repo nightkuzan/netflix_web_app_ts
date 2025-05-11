@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Play, Info, Plus } from "lucide-react";
 import { useIsMobile } from "@hooks/use-mobile";
+import { useDictionaries } from "@core/contexts/dictionariesContext"; // Import the dictionary context
 import MainShowBg from "@assets/main_show_bg.png";
 import DevilInOhio from "@assets/devil_in_ohio.png";
 import n from "@assets/n.png";
@@ -15,6 +16,8 @@ import HeroLoadingSkeleton from "./Show/Skeleton/HeroLoadingSkeleton";
 const HeroSection = () => {
   const isMobile = useIsMobile();
   const [isLoading, setIsLoading] = useState(true);
+  const dictionaries = useDictionaries(); // Get the dictionaries
+  const text = dictionaries.text || {};
 
   useEffect(() => {
     const load = async () => {
@@ -84,7 +87,7 @@ const HeroSection = () => {
           className={`text-sm text-white mb-4 ${isMobile ? "text-center" : ""}`}
         >
           {isMobile ? (
-            "TV Mysteries • Based on Books"
+            `${text.tv_mysteries} • ${text.based_on_books}`
           ) : (
             <>
               <div className="flex items-center space-x-2 mb-2">
@@ -93,12 +96,10 @@ const HeroSection = () => {
                   alt="Top 10"
                   className="w-6 h-6 object-contain"
                 />
-                <span className="font-bold text-xl">#1 in TV Shows Today</span>
+                <span className="font-bold text-xl">{text.top_1_shows}</span>
               </div>
               <p className="mt-2 max-w-xl text-lg">
-                Determined to protect a young patient who escaped a mysterious
-                cult, a psychiatrist takes the girl in, putting her own family —
-                and life — in danger.
+                {text.devil_in_ohio_description}
               </p>
             </>
           )}
@@ -113,13 +114,13 @@ const HeroSection = () => {
           {isMobile && (
             <button className="bg-transparent text-white px-4 py-2 rounded flex items-center font-semibold transition hover:bg-white/10">
               <Plus className="h-5 w-5 mr-2" />
-              My List
+              {text.my_list}
             </button>
           )}
 
           <button className="bg-white text-black px-5 py-2 md:py-3 rounded flex items-center font-semibold hover:bg-opacity-90 transition">
             <Play className="h-5 w-5 mr-2" fill="black" />
-            Play
+            {text.play}
           </button>
 
           <button
@@ -130,7 +131,7 @@ const HeroSection = () => {
             } rounded flex items-center font-semibold transition`}
           >
             <Info className="h-5 w-5 mr-2" />
-            {isMobile ? "Info" : "More Info"}
+            {isMobile ? text.info : text.more_info}
           </button>
         </div>
       </div>

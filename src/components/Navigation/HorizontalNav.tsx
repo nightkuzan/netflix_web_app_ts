@@ -1,11 +1,15 @@
 import React from "react";
 import { Search, Bell, Menu, Cast, Info } from "lucide-react";
 import { useIsMobile } from "@hooks/use-mobile";
+import { useDictionaries } from "@core/contexts/dictionariesContext"; // Import the dictionary context
 import logo from "@/assets/logo.png";
 import n from "@/assets/n.png";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Navbar = () => {
   const isMobile = useIsMobile();
+  const dictionaries = useDictionaries(); // Get the dictionaries
+  const text = dictionaries.text || {};
 
   return (
     <header className="fixed top-0 w-full z-50 bg-gradient-to-b from-black/80 to-transparent px-2 md:px-12 py-2">
@@ -26,6 +30,7 @@ const Navbar = () => {
               {/* Right Icons */}
               <div className="flex items-center space-x-4">
                 <Cast className="w-6 h-6 text-white" />
+                <LanguageSwitcher />
                 <div className="w-6 h-6 bg-white/20 rounded"></div>
               </div>
             </div>
@@ -36,16 +41,16 @@ const Navbar = () => {
                 href="/tv-shows"
                 className="text-white text-sm whitespace-nowrap"
               >
-                TV Shows
+                {text.tv_shows}
               </a>
               <a
                 href="/movies"
                 className="text-white text-sm whitespace-nowrap"
               >
-                Movies
+                {text.movies}
               </a>
               <div className="relative text-white text-sm whitespace-nowrap">
-                Categories
+                {text.categories}
                 <span className="ml-1 inline-block">▼</span>
               </div>
             </div>
@@ -69,51 +74,51 @@ const Navbar = () => {
                   href="/"
                   className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
                 >
-                  Home
+                  {text.home}
                 </a>
                 <a
                   href="/tv-shows"
                   className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
                 >
-                  TV Shows
+                  {text.tv_shows}
                 </a>
                 <a
                   href="/movies"
                   className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
                 >
-                  Movies
+                  {text.movies}
                 </a>
                 <a
                   href="/new"
                   className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
                 >
-                  New & Popular
+                  {text.new_and_popular}
                 </a>
                 <a
                   href="/my-list"
                   className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
                 >
-                  My List
+                  {text.my_list}
                 </a>
                 <a
                   href="/browse-languages"
                   className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
                 >
-                  Browse by Languages
+                  {text.browse_by_languages}
                 </a>
               </nav>
             </div>
 
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-4">
               <Search className="h-5 w-5 text-gray-300 hover:text-white cursor-pointer" />
               <a
                 href="/kids"
                 className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
               >
-                Kids
+                {text.kids}
               </a>
               <Bell className="h-5 w-5 text-gray-300 hover:text-white cursor-pointer" />
-              <div className="h-8 w-8 bg-gray-500 rounded-sm"></div>
+              <LanguageSwitcher />
             </div>
           </>
         )}

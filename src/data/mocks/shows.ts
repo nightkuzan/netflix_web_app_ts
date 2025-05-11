@@ -12,6 +12,13 @@ export const shows: Show[] = [
       "https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
     type: "movie",
     genres: ["Action", "Crime", "Drama"],
+    genreTranslations: {
+      th: {
+        Action: "แอ็คชั่น",
+        Crime: "อาชญากรรม",
+        Drama: "ดราม่า",
+      },
+    },
     releaseYear: 2008,
     rating: 9.0,
     duration: "2h 32m",
@@ -27,6 +34,11 @@ export const shows: Show[] = [
         description:
           "Batman affronte un nouvel ennemi, le Joker, qui sème le chaos à Gotham City.",
       },
+      th: {
+        title: "อัศวินรัตติกาล",
+        description:
+          "แบทแมนเผชิญหน้ากับศัตรูตัวฉกาจอย่างโจ๊กเกอร์ ผู้ก่อความวุ่นวายในเมืองก็อตแธม",
+      },
     },
   },
   {
@@ -40,6 +52,13 @@ export const shows: Show[] = [
       "https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=925&q=80",
     type: "movie",
     genres: ["Action", "Adventure", "Sci-Fi"],
+    genreTranslations: {
+      th: {
+        Action: "แอ็คชั่น",
+        Adventure: "ผจญภัย",
+        "Sci-Fi": "วิทยาศาสตร์",
+      },
+    },
     releaseYear: 2010,
     rating: 8.8,
     duration: "2h 28m",
@@ -49,6 +68,11 @@ export const shows: Show[] = [
         title: "Origen",
         description:
           "Un ladrón que entra en los sueños de otros para robar sus secretos del subconsciente.",
+      },
+      th: {
+        title: "อินเซปชั่น จิตพิฆาตโลก",
+        description:
+          "ขโมยที่เข้าไปในความฝันของผู้อื่นเพื่อขโมยความลับจากจิตใต้สำนึกของพวกเขา",
       },
       fr: {
         title: "Inception",

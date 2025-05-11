@@ -9,12 +9,29 @@ type Props = {
 };
 
 const ShowList: React.FC<Props> = ({ title, shows }) => {
-  const t = useDictionaries();
+  const dictionaries = useDictionaries();
+  const locale = dictionaries.locale as string;
   const isMobile = useIsMobile();
+
+  // Helper function to get localized show title
+  const getLocalizedTitle = (show: Show): string => {
+    if (show.translations && show.translations[locale]) {
+      return show.translations[locale].title;
+    }
+    return show.title;
+  };
+
+  // Helper function to get localized show description
+  const getLocalizedDescription = (show: Show): string => {
+    if (show.translations && show.translations[locale]) {
+      return show.translations[locale].description;
+    }
+    return show.description;
+  };
 
   const handleShowClick = (showId: string) => {
     if (!showId) return;
-    window.location.href = `/${t.locale}/movie/${showId}`;
+    window.location.href = `/${locale}/movie/${showId}`;
   };
 
   const isLoading = shows.length === 0;
@@ -88,7 +105,7 @@ const ShowList: React.FC<Props> = ({ title, shows }) => {
                 <div className="w-full">
                   <img
                     src={show.backdropUrl}
-                    alt={show.title}
+                    alt={getLocalizedTitle(show)}
                     className={`w-full object-cover rounded ${
                       isMobile ? "aspect-[3/4]" : "aspect-video"
                     }`}
@@ -111,7 +128,7 @@ const ShowList: React.FC<Props> = ({ title, shows }) => {
                   } flex items-center justify-center transition-opacity`}
                 >
                   <span className="text-white text-sm md:text-lg font-medium text-center px-2">
-                    {show.title}
+                    {getLocalizedTitle(show)}
                   </span>
                 </div>
               </div>
