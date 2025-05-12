@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { createContext, useContext, ReactNode } from "react";
 
-export type Dictionaries = Record<string, any>;
+export type Dictionaries = Record<string, unknown>;
 
 const DictionariesContext = createContext<Dictionaries | null>(null);
 

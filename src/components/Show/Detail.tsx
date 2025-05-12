@@ -1,6 +1,5 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import React from "react";
 import { ChevronLeft, Play, Info, Star } from "lucide-react";
 import { useIsMobile } from "@hooks/use-mobile";

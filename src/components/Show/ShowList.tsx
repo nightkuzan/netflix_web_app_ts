@@ -21,14 +21,6 @@ const ShowList: React.FC<Props> = ({ title, shows }) => {
     return show.title;
   };
 
-  // Helper function to get localized show description
-  const getLocalizedDescription = (show: Show): string => {
-    if (show.translations && show.translations[locale]) {
-      return show.translations[locale].description;
-    }
-    return show.description;
-  };
-
   const handleShowClick = (showId: string) => {
     if (!showId) return;
     window.location.href = `/${locale}/movie/${showId}`;

@@ -7,7 +7,7 @@ export class InMemoryShowRepository implements ShowRepository {
     try {
       const response = await axios.get("/shows");
       return response.data;
-    } catch (error) {
+    } catch (_) {
       return [];
     }
   }
@@ -16,7 +16,7 @@ export class InMemoryShowRepository implements ShowRepository {
     try {
       const response = await axios.get(`/shows/${id}`);
       return response.data;
-    } catch (error) {
+    } catch (_) {
       return undefined;
     }
   }

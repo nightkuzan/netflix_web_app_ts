@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 
 import type { SystemMode } from "@core/types";
 
-const NotFound = ({ mode }: { mode: SystemMode }) => {
+const NotFound = (): React.ReactElement => {
   const dictionaries = useDictionaries();
   const text = dictionaries.text || {};
 

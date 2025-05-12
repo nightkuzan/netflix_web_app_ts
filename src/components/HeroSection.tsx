@@ -23,7 +23,7 @@ const HeroSection = () => {
     const load = async () => {
       try {
         await new Promise((res) => setTimeout(res, 1500));
-      } catch (e) {
+      } catch (_) {
       } finally {
         setIsLoading(false);
       }

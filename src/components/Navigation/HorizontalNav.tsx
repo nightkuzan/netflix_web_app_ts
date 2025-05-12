@@ -1,10 +1,11 @@
 import React from "react";
-import { Search, Bell, Menu, Cast, Info } from "lucide-react";
+import { Search, Bell, Cast } from "lucide-react";
 import { useIsMobile } from "@hooks/use-mobile";
 import { useDictionaries } from "@core/contexts/dictionariesContext";
 import logo from "@/assets/logo.png";
 import n from "@/assets/n.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Link from "next/link";
 
 const Navbar = () => {
   const isMobile = useIsMobile();
@@ -36,18 +37,18 @@ const Navbar = () => {
 
             {/* Horizontal Navigation Menu */}
             <div className="px-4 flex space-x-6 overflow-x-auto hide-scrollbar">
-              <a
+              <Link
                 href="/tv-shows"
                 className="text-white text-sm whitespace-nowrap"
               >
                 {text.tv_shows}
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/movies"
                 className="text-white text-sm whitespace-nowrap"
               >
                 {text.movies}
-              </a>
+              </Link>
               <div className="relative text-white text-sm whitespace-nowrap">
                 {text.categories}
                 <span className="ml-1 inline-block">▼</span>
@@ -68,53 +69,53 @@ const Navbar = () => {
 
               {/* Navigation Links */}
               <nav className="flex space-x-6">
-                <a
+                <Link
                   href="/"
                   className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
                 >
                   {text.home}
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/tv-shows"
                   className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
                 >
                   {text.tv_shows}
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/movies"
                   className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
                 >
                   {text.movies}
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/new"
                   className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
                 >
                   {text.new_and_popular}
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/my-list"
                   className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
                 >
                   {text.my_list}
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/browse-languages"
                   className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
                 >
                   {text.browse_by_languages}
-                </a>
+                </Link>
               </nav>
             </div>
 
             <div className="flex items-center space-x-4">
               <Search className="h-5 w-5 text-gray-300 hover:text-white cursor-pointer" />
-              <a
+              <Link
                 href="/kids"
                 className="text-gray-300 hover:text-white transition text-base md:text-xl font-medium"
               >
                 {text.kids}
-              </a>
+              </Link>
               <Bell className="h-5 w-5 text-gray-300 hover:text-white cursor-pointer" />
               <LanguageSwitcher />
             </div>

@@ -13,7 +13,6 @@ const ShowsPage = () => {
   const [show, setShow] = useState<Show | null>(null);
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  const dictionaries = useDictionaries(); 
   
 
   const params = useParams();
@@ -27,7 +26,7 @@ const ShowsPage = () => {
         const response = await fetch(`/api/shows/${id}`);
         const data: Show = await response.json();
         setShow(data);
-      } catch (error) {
+      } catch (_) {
         setHasError(true);
       } finally {
         setLoading(false);
