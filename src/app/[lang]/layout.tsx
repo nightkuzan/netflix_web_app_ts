@@ -20,14 +20,12 @@ export const metadata = {
 export default async function RootLayout({
   children,
   params,
-}: Readonly<{
+}: {
   children: ReactNode;
-  params: {
-    lang: Locale;
-  };
-}>) {
-  const { lang } = await params;
-  const dictionary = await getDictionary(lang as Locale);
+  params: { lang: Locale };
+}) {
+  const { lang } = params;
+  const dictionary = await getDictionary(lang);
 
   return (
     <html lang={lang}>

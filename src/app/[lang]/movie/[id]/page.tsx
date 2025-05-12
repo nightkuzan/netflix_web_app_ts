@@ -7,7 +7,6 @@ import MovieDetail from "@/components/Show/Detail";
 import DetailLoadingSkeleton from "@/components/Show/Skeleton/DetailLoadingSkeleton";
 import ErrorSkeleton from "@/components/Show/Skeleton/ErrorSkeleton";
 import { useParams } from "next/navigation";
-import { useDictionaries } from "@core/contexts/dictionariesContext";
 
 const ShowsPage = () => {
   const [show, setShow] = useState<Show | null>(null);
@@ -26,7 +25,8 @@ const ShowsPage = () => {
         const response = await fetch(`/api/shows/${id}`);
         const data: Show = await response.json();
         setShow(data);
-      } catch (_) {
+      } catch (error) {
+        console.error("Error fetching show by ID:", error);
         setHasError(true);
       } finally {
         setLoading(false);

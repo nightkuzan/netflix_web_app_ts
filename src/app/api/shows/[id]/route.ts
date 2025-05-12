@@ -15,7 +15,7 @@ export async function GET(
   try {
     const show = await getShowsById(showRepository, params.id as string);
     return NextResponse.json(show);
-  } catch (_) {
-    return NextResponse.json({ error: "Show not found" }, { status: 404 });
+  } catch (error) {
+    return NextResponse.json({ error: error }, { status: 404 });
   }
 }

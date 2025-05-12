@@ -7,7 +7,8 @@ export class InMemoryShowRepository implements ShowRepository {
     try {
       const response = await axios.get("/shows");
       return response.data;
-    } catch (_) {
+    } catch (error) {
+      console.error("Error fetching shows:", error);
       return [];
     }
   }
@@ -16,7 +17,8 @@ export class InMemoryShowRepository implements ShowRepository {
     try {
       const response = await axios.get(`/shows/${id}`);
       return response.data;
-    } catch (_) {
+    } catch (error) {
+      console.error("Error fetching show by ID:", error);
       return undefined;
     }
   }

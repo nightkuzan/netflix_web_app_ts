@@ -1,23 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { useDictionaries } from "@core/contexts/dictionariesContext";
+import { useDictionaries, TextDictionary } from "@core/contexts/dictionariesContext";
 
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import type { SystemMode } from "@core/types";
-
 const NotFound = (): React.ReactElement => {
   const dictionaries = useDictionaries();
-  const text = dictionaries.text || {};
+  const text: TextDictionary = dictionaries.text || {};
 
   return (
     <div className="flex items-center justify-center min-bs-[100dvh] relative p-6 overflow-x-hidden">
       <div className="flex items-center flex-col text-center">
         <div className="flex flex-col gap-2 is-[90vw] sm:is-[unset] mbe-6">
           <Typography className="font-medium text-8xl" color="text.primary">
-            {text["404"]}
+            {text.error_404}
           </Typography>
           <Typography variant="h4">{text.page_not_found}</Typography>
           <Typography className="pt-2">{text.page_not_found_desc}</Typography>

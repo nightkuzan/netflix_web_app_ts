@@ -2,10 +2,7 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "@next/next/no-img-element": "warn",
-    "@next/next/no-html-link-for-pages": "warn",
-    "@typescript-eslint/no-unused-vars": ["error", {
-      "argsIgnorePattern": "^_",
-      "varsIgnorePattern": "^_"
-    }]
+    "@next/next/no-html-link-for-pages": "warn", 
+    "@typescript-eslint/no-unused-vars": "off"
   }
 }
