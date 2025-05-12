@@ -1,36 +1,182 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Netflix Web App
 
-## Getting Started
+A Netflix-inspired web application built with Next.js and TypeScript, following clean architecture principles.
 
-First, run the development server:
+## 1. Installation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+
+- Node.js (v18 or later)
+- npm, yarn, pnpm, or bun
+
+### Setup Instructions
+
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/nightkuzan/netflix_web_app_ts.git
+   cd netflix_web_app_ts
+   ```
+
+2. Install dependencies
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   # or
+   bun install
+   ```
+
+3. Copy the environment variables template
+
+   ```bash
+   cp env.example .env.local
+   ```
+
+4. Configure your environment variables in `.env.local`
+
+   ```
+   NEXT_PUBLIC_API_URL=http://localhost:3001
+   ```
+
+5. Start the development server
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+
+6. Open [http://localhost:8081](http://localhost:8081) in your browser
+
+## 2. Architecture
+
+This application follows **Clean Architecture** principles, separating concerns into distinct layers:
+
+### Domain Layer
+
+The core of the application, containing business logic and entities.
+
+- **Entities**: Core business models like `Show` (movies and series)
+- **Repositories**: Interfaces that define data access methods
+
+### Application Layer
+
+Contains application-specific business rules and use cases.
+
+- **Use Cases**: Orchestrates the flow of data between entities and the interface
+
+### Infrastructure Layer
+
+Implements technical details and adapters for external services.
+
+- **Repositories Implementation**: Concrete implementations of repository interfaces
+
+### Interface Layer (Presentation)
+
+The user interface and API endpoints.
+
+- **Pages**: Next.js pages and components
+- **API Routes**: REST endpoints
+- **Components**: Reusable UI components
+
+### Key Architectural Features
+
+- **Dependency Inversion**: Higher-level modules don't depend on lower-level modules
+- **Separation of Concerns**: Clear boundaries between layers
+- **Testability**: Business logic can be tested independently
+- **Flexibility**: External frameworks and tools can be replaced without affecting core business logic
+
+### Folder Structure Overview
+
+```
+src/
+  domain/           # Domain layer
+    entities/       # Business entities
+    repositories/   # Repository interfaces
+
+  application/      # Application layer
+    useCases/       # Business use cases
+
+  infrastructure/   # Infrastructure layer
+    config/         # Configuration
+    repositories/   # Repository implementations
+
+  app/              # Interface layer (Next.js app router)
+    api/            # API endpoints
+    [lang]/         # Internationalized routes
+
+  components/       # UI components
+  utils/            # Utility functions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 3. Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Content Browsing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Show Catalog**: Browse movies and TV series
+- **Show Details**: View detailed information about shows
+- **Hero Section**: Featured content with promotional material
 
-## Learn More
+### Internationalization
 
-To learn more about Next.js, take a look at the following resources:
+- **Multi-language Support**: Easily switch between languages
+- **Translation Management**: External translation files
+- **Language Selection**: Language switcher component
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Responsive Design
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Mobile-First Approach**: Optimized for all device sizes
+- **Responsive Navigation**: Adaptive navigation based on device size
 
-## Deploy on Vercel
+### Performance Optimization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Image Optimization**: Next.js image optimization
+- **Loading Skeletons**: Smooth loading experience
+- **Lazy Loading**: Components load as needed
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### API Integration
+
+- **External API Connection**: Connect with backend services
+- **Clean Repository Pattern**: Separation between data sources and business logic
+- **Error Handling**: Graceful handling of API failures
+
+### Technical Implementation
+
+- **TypeScript**: Strong typing for safer code
+- **Next.js**: React framework for server-side rendering and routing
+- **Tailwind CSS**: Utility-first CSS framework
+- **Clean Architecture**: Modular, maintainable code structure
+
+## Deployment
+
+The application can be deployed on various platforms:
+
+### Deploy on Vercel
+
+```bash
+npm run build
+vercel
+```
+
+### Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
