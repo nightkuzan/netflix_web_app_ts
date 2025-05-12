@@ -4,7 +4,7 @@ import { useIsMobile } from "@hooks/use-mobile";
 import shimmer from "@assets/shimmer.png";
 
 type Props = {
-  title: string;
+  title: string | undefined;
   shows: Show[];
 };
 

@@ -1,16 +1,19 @@
 import React from "react";
 import { Search, Bell, Cast } from "lucide-react";
 import { useIsMobile } from "@hooks/use-mobile";
-import { useDictionaries } from "@core/contexts/dictionariesContext";
 import logo from "@/assets/logo.png";
 import n from "@/assets/n.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Link from "next/link";
+import {
+  useDictionaries,
+  TextDictionary,
+} from "@core/contexts/dictionariesContext";
 
 const Navbar = () => {
   const isMobile = useIsMobile();
   const dictionaries = useDictionaries();
-  const text = dictionaries.text || {};
+  const text: TextDictionary = dictionaries.text || {};
 
   return (
     <header className="fixed top-0 w-full z-50 bg-gradient-to-b from-black/80 to-transparent px-2 md:px-12 py-2">

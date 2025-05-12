@@ -12,7 +12,6 @@ const ShowsPage = () => {
   const [show, setShow] = useState<Show | null>(null);
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  
 
   const params = useParams();
   const id = params?.id as string;

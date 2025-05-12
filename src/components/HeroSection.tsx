@@ -3,7 +3,11 @@
 import React, { useEffect, useState } from "react";
 import { Play, Info, Plus } from "lucide-react";
 import { useIsMobile } from "@hooks/use-mobile";
-import { useDictionaries } from "@core/contexts/dictionariesContext";
+import {
+  useDictionaries,
+  TextDictionary,
+} from "@core/contexts/dictionariesContext";
+
 import MainShowBg from "@assets/main_show_bg.png";
 import DevilInOhio from "@assets/devil_in_ohio.png";
 import n from "@assets/n.png";
@@ -17,7 +21,7 @@ const HeroSection = () => {
   const isMobile = useIsMobile();
   const [isLoading, setIsLoading] = useState(true);
   const dictionaries = useDictionaries();
-  const text = dictionaries.text || {};
+  const text: TextDictionary = dictionaries.text || {};
 
   useEffect(() => {
     const load = async () => {

@@ -1,7 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useDictionaries, TextDictionary } from "@core/contexts/dictionariesContext";
+import {
+  useDictionaries,
+  TextDictionary,
+} from "@core/contexts/dictionariesContext";
 
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";

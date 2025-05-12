@@ -3,10 +3,13 @@
 import React from "react";
 import { ChevronLeft, Play, Info, Star } from "lucide-react";
 import { useIsMobile } from "@hooks/use-mobile";
-import { useDictionaries } from "@core/contexts/dictionariesContext";
 import Button from "@mui/material/Button";
 import shimmer from "@assets/shimmer.png";
 import { Show } from "@/domain/entities/Show";
+import {
+  useDictionaries,
+  TextDictionary,
+} from "@core/contexts/dictionariesContext";
 
 type Props = {
   movie: Show;
@@ -15,7 +18,7 @@ type Props = {
 const MovieDetail: React.FC<Props> = ({ movie }) => {
   const isMobile = useIsMobile();
   const dictionaries = useDictionaries();
-  const text = dictionaries.text || {};
+  const text: TextDictionary = dictionaries.text || {};
   const locale = dictionaries.locale as string;
 
   const getLocalizedTitle = (show: Show): string => {

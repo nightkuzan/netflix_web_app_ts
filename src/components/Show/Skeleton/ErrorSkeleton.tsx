@@ -1,13 +1,16 @@
 "use client";
 
 import React from "react";
-import { useDictionaries } from "@core/contexts/dictionariesContext";
+import {
+  useDictionaries,
+  TextDictionary,
+} from "@core/contexts/dictionariesContext";
 import Button from "@mui/material/Button";
 import { ChevronLeft } from "lucide-react";
 
 const ErrorSkeleton = () => {
   const dictionaries = useDictionaries();
-  const text = dictionaries.text || {};
+  const text: TextDictionary = dictionaries.text || {};
 
   const handleBack = () => {
     window.history.back();
