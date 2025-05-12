@@ -1,0 +1,10 @@
+{
+    "buildCommand": "next build",
+    "devCommand": "next dev",
+    "installCommand": "npm install",
+    "framework": "nextjs",
+    "outputDirectory": ".next",
+    "env": {
+        "NEXT_PUBLIC_API_URL": "https://dutch-jammie-nightkuzan-6f72029d.koyeb.app"
+    }
+}
