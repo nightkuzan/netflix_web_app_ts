@@ -3,7 +3,7 @@ import qs from "qs";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL
   ? `${process.env.NEXT_PUBLIC_API_URL}/api`
-  : "http://localhost:1337/api";
+  : "http://localhost:3001/api";
 
 const config: AxiosRequestConfig = {
   baseURL,
