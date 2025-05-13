@@ -24,6 +24,7 @@ const LanguageSwitcher = () => {
         <Link
           href={`/${locale}${pathWithoutLang}`}
           key={locale}
+          replace={true}
           className={`px-2 py-1 rounded text-sm ${
             locale === currentLang
               ? "bg-red-600 text-white"
